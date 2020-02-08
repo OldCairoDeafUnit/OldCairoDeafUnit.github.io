@@ -65,7 +65,7 @@ var mode = 0 //ta5atub or alphabet
 var pics = {}; // An object to hold our Images. Always use `var` to declare variables!
 var gifs = {};
 var letters = "ضصثقفغعهخحجدشسيبلاتنمكطئءؤرلاةوزظذأإ" //note: no image for alif maqsura... causes problems
-var ta5atub = "ضصثقفغعهخحجدشسيبلاتنمكطئءؤرلاةوزظذ"
+var ta5atub = "ضصثقفغعهخحجدشسيبلاتنمكطئءروزظذ"
 function preloader() { //later version: load in videos of ta5atub and map them to characters
   if (document.images) {
     for (i in letters){
@@ -164,8 +164,8 @@ function check(){
   solution = solution.replace("ى","ي") //make ya and alif maqsura equal
 
 
-  console.log(solution)
-  console.log(input)
+  // console.log(solution)
+  // console.log(input)
   if (!checked){
     if (solution == input ){
       score+=1
@@ -218,7 +218,7 @@ function update_letter(i,char,doubled) {
     }
   }
   if (mode == 1){
-    console.log(char)
+    // console.log(char)
     if (char == "ى"){
       char = "ي"
       // eval("document.images['l'].src=\'ي.gif\';")
@@ -231,7 +231,7 @@ function update_letter(i,char,doubled) {
       eval("document.images['l'].src=gifs[char].src'");
     }
     else if (char == "ة"){
-      console.log("its ta marbuta")
+      // console.log("its ta marbuta")
       eval("document.images['l'].src=pics[char].src;" );
     }
     else if (char == "أ" || char == "إ"){
@@ -268,7 +268,7 @@ async function delayedLetters(speed) {
     doubled = true;
   }
   update_letter(i,char,doubled);
-  await sleep(1200/speed);
+  await sleep(1000/speed);
   }
   char = "blank"
   eval("$(\"#letter\").css(\"margin-right\",\"auto\")");
