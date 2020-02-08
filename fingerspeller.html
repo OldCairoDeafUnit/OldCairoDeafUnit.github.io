@@ -74,10 +74,11 @@ function preloader() { //later version: load in videos of ta5atub and map them t
       pics[letters[i]].src = letters[i]+".png";
     // }
     }
-    for i in ta5atub {
+    for (i in ta5atub) {
       gifs[ta5atub[i]] = new Image(200,200);
       var char = ta5atub[i]
       if (char == "ا" || char == "ب" || char == "ر" || char == "ز" || char == "س" || char == "ص" || char == "ض" || char == "ط" || char == "ا" || char == "ظ"){
+        gifs[ta5atub[i]+"2"] = new Image(200,200);
         gifs[ta5atub[i]+"2"].src = ta5atub[i]+"2.gif"
       }
       gifs[ta5atub[i]].src = ta5atub[i]+".gif"
