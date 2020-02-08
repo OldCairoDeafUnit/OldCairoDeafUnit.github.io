@@ -1,7 +1,7 @@
 <!doctype html><html dir="rtl" lang="en">
 
 <head><meta charset="utf-8">
-	<link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <script>
@@ -14,25 +14,25 @@ enable_page_level_ads: true
 
 
 <body><div><div id="par"><p>لعبة هجاء الأصابع</p>
-	<!-- <p style="display: inline">إختار </p> -->
-	<select id="mode">
-		<option value="0" selected="selected">الأبجدية العربية</option>
-		<option value="1">التخاطب</option>
-	</select><br>
+  <!-- <p style="display: inline">إختار </p> -->
+  <select id="mode">
+    <option value="0" selected="selected">الأبجدية العربية</option>
+    <option value="1">التخاطب</option>
+  </select><br>
 
 
-	<div>
-		<img name="l" id="letter" src="blank.png"></img><br>
-		<input type="text" name="answer" id="answer"><br><button id="check">صح أو غلط؟</button><br>
-		<button style="display:inline" id="next">التالي</button> <button style="display:inline" id="replay">كمان مرة</button><br><br>
-		<p style="display:inline">الإجابة: <p style="display:inline" id="correction"></p></p>
-		<p style="display:inline">إختار السرعة:
-		<select style="display:inline" id = "speed">
+  <div>
+    <img name="l" id="letter" src="blank.png"></img><br>
+    <input type="text" name="answer" id="answer"><br><button id="check">صح أو غلط؟</button><br>
+    <button style="display:inline" id="next">التالي</button> <button style="display:inline" id="replay">كمان مرة</button><br><br>
+    <p style="display:inline">الإجابة: <p style="display:inline" id="correction"></p></p>
+    <p style="display:inline">إختار السرعة:
+    <select style="display:inline" id = "speed">
                <option value = "1" selected="selected">١</option>
                <option value = "2">٢</option>
                <option value = "3">٣</option>
                <option value = "4">سرعة الصم</option>
-             </select>	</p>	<br>
+             </select>  </p>  <br>
         <p style="display:inline">طول الكلمة:
         <select  style="display:inline" id = "length">
                <option value = "1">١</option>
@@ -45,9 +45,9 @@ enable_page_level_ads: true
                <option value = "8">٨</option>
                <option value = "9">أي طول</option>
         </select></p>
-		<br>
-		<p style="display:inline">اجابات صحيحة: </p><p style="display:inline" id="score">0</p>
-	</div>
+    <br>
+    <p style="display:inline">اجابات صحيحة: </p><p style="display:inline" id="score">0</p>
+  </div>
 </div>
 <script>
 
@@ -63,46 +63,55 @@ var words = ['ال','و','في','من','ل','ب','بسبب','على','أن','إ�
 var score=0
 var mode = 0 //ta5atub or alphabet
 var pics = {}; // An object to hold our Images. Always use `var` to declare variables!
+var gifs = {};
 var letters = "ضصثقفغعهخحجدشسيبلاتنمكطئءؤرلاةوزظذأإ" //note: no image for alif maqsura... causes problems
 var ta5atub = "ضصثقفغعهخحجدشسيبلاتنمكطئءؤرلاةوزظذ"
 function preloader() { //later version: load in videos of ta5atub and map them to characters
-	if (document.images) {
-		for (i in letters){
-			// if (dword.includes(letters[i])){
-			pics[letters[i]] = new Image(200,200);
-			pics[letters[i]].src = letters[i]+".png";
-		// }
-		}
-	}
+  if (document.images) {
+    for (i in letters){
+      // if (dword.includes(letters[i])){
+      pics[letters[i]] = new Image(200,200);
+      pics[letters[i]].src = letters[i]+".png";
+    // }
+    }
+    for i in ta5atub {
+      gifs[ta5atub[i]] = new Image(200,200);
+      var char = ta5atub[i]
+      if (char == "ا" || char == "ب" || char == "ر" || char == "ز" || char == "س" || char == "ص" || char == "ض" || char == "ط" || char == "ا" || char == "ظ"){
+        gifs[ta5atub[i]+"2"].src = ta5atub[i]+"2.gif"
+      }
+      gifs[ta5atub[i]].src = ta5atub[i]+".gif"
+    }
+  }
 }
-var	speed = $("#speed").val()
-var	d_length = $("#length").val()
+var speed = $("#speed").val()
+var d_length = $("#length").val()
 preloader();
 var d_words = [] //desired words
 //later version: allow teachers to add specific vocab from lessons
 function get_words(){
-	if (d_length==9){
-		for (var w in words){
-			d_words.push(words[w]);
-		}	
-	}
-	else {
-		for (var w in words){
-			if (words[w].length == d_length)
-			{
-				d_words.push(words[w]);
-			}
-		}
-	}
+  if (d_length==9){
+    for (var w in words){
+      d_words.push(words[w]);
+    } 
+  }
+  else {
+    for (var w in words){
+      if (words[w].length == d_length)
+      {
+        d_words.push(words[w]);
+      }
+    }
+  }
 }
 function shuffleArray(array) {
-	    for (var i = array.length - 1; i > 0; i--) {
-	        var j = Math.floor(Math.random() * (i + 1));
-	        var temp = array[i];
-	        array[i] = array[j];
-	        array[j] = temp;
-	    }
-	}
+      for (var i = array.length - 1; i > 0; i--) {
+          var j = Math.floor(Math.random() * (i + 1));
+          var temp = array[i];
+          array[i] = array[j];
+          array[j] = temp;
+      }
+  }
 function sleep(milliseconds) {
   var start = new Date().getTime();
   // $("img").replaceWith(pics[char]);
@@ -117,129 +126,130 @@ function sleep(milliseconds) {
 }
 checked = false
 $("#next").click(function(){
-	//get speed and length from inputs
-	speed = $("#speed").val()
-	d_length = $("#length").val()
-	if (mode == 1){
-		speed = 1
-	}
-	// check radio buttons for speed and length
-	//get a word from the list
-	mode = $("#mode").val()
-	checked = false;
-	get_words();
-	$("#answer").val("")
-	shuffleArray(d_words);
-	word_to_display = d_words[0]
-	delayedLetters(speed);
+  //get speed and length from inputs
+  speed = $("#speed").val()
+  d_length = $("#length").val()
+  if (mode == 1){
+    speed = 1
+  }
+  // check radio buttons for speed and length
+  //get a word from the list
+  mode = $("#mode").val()
+  checked = false;
+  get_words();
+  $("#answer").val("")
+  shuffleArray(d_words);
+  word_to_display = d_words[0]
+  delayedLetters(speed);
 })
 $("#replay").click(function(){
-	//check radio buttons for speed only
-	if (mode == 1){
-		speed = 1
-	}
-	delayedLetters(speed);
+  //check radio buttons for speed only
+  if (mode == 1){
+    speed = 1
+  }
+  delayedLetters(speed);
 })
 
 function check(){
-	input = $("#answer").val()
-	solution = d_words[0]
-	if (mode == 1){
-		input = input.replace("أ","ا")
-		input = input.replace("إ","ا")
-		solution = solution.replace("أ","ا")
-		solution = solution.replace("إ","ا")
-	}
-	input = input.replace("ى","ي")
-	solution = solution.replace("ى","ي") //make ya and alif maqsura equal
+  input = $("#answer").val()
+  solution = d_words[0]
+  if (mode == 1){
+    input = input.replace("أ","ا")
+    input = input.replace("إ","ا")
+    solution = solution.replace("أ","ا")
+    solution = solution.replace("إ","ا")
+  }
+  input = input.replace("ى","ي")
+  solution = solution.replace("ى","ي") //make ya and alif maqsura equal
 
 
-	console.log(solution)
-	console.log(input)
-	if (!checked){
-		if (solution == input ){
-			score+=1
-			update_score();
-			//smiley face!
-			document.images['l'].src = "smiley.png"
-		}
-		else {
-			//display x
-			document.images['l'].src = "oops.png"
-			$("#correction").text(d_words[0])
-		}
-	}
-	checked = true
+  console.log(solution)
+  console.log(input)
+  if (!checked){
+    if (solution == input ){
+      score+=1
+      update_score();
+      //smiley face!
+      document.images['l'].src = "smiley.png"
+    }
+    else {
+      //display x
+      document.images['l'].src = "oops.png"
+      $("#correction").text(d_words[0])
+    }
+  }
+  checked = true
 }
 
 $("#check").click(function(){
-	check();
+  check();
 });
 
 
 
 function update_score(){
-	$("#score").text(score)
+  $("#score").text(score)
 }
 //the actual update function
 //will need to edit for certain conditions (letter twice in a row, hamzated yaa...)
 function update_letter(i,char,doubled) {  
-	//if mode = arabic
-	//if mode === ta5atub
-	//if mode == english...
-	//if letter before == current letter....
-	//if letter is ئ but in the middle of a word
-	if (mode == 0){
-		if (char == "ئ" && i+1 != word_to_display.length){
-			eval("document.images['l'].src='ئ وسط';" )
-		}
-		else {
-			if (char == "ى"){
-				char = "ي"
-			}
-			eval("document.images['l'].src=pics[char].src;" );
-			if (doubled){
-				//eval doubled letter???
-				// left:25px
-				// $("#letter").css("style","left: 10px;")
-				$("img").css("margin-right","45%")
-				// eval("$(\"#letter\").animate({left: \"-=30px\"}, 9000);")
-			}
-		}
-	}
-	if (mode == 1){
-		console.log(char)
-		if (char == "ى"){
-			char = "ي"
-			// eval("document.images['l'].src=\'ي.gif\';")
-			eval("document.images['l'].src=\'"+char+".gif\'");
-		}
-		else if (char == "ئ" || char == "ؤ") {
-			char = "ء"
-			// eval("document.images['l'].src=\'ء.gif\';")
-			eval("document.images['l'].src=\'"+char+".gif\'");
-		}
-		else if (char == "ة"){
-			console.log("its ta marbuta")
-			eval("document.images['l'].src=\'ة.png\';" );
-		}
-		else if (char == "أ" || char == "إ"){
-			char = "ا"
-			eval("document.images['l'].src=\'"+char+".gif\'");
-		}
-		else if (char == "ا" || char == "ب" || char == "ر" || char == "ز" || char == "س" || char == "ص" || char == "ض" || char == "ط" || char == "ا" || char == "ظ"){
-			var rand = Math.random() // get a random number between 0 and 1
-			if (rand){
-				eval("document.images['l'].src=\'"+char+"2.gif\'");
-			}
-			else {
-				eval("document.images['l'].src=\'"+char+".gif\'");
-			}
-		}
-		else {
-			eval("document.images['l'].src=\'"+char+".gif\'");
-		}
-	}
+  //if mode = arabic
+  //if mode === ta5atub
+  //if mode == english...
+  //if letter before == current letter....
+  //if letter is ئ but in the middle of a word
+  if (mode == 0){
+    if (char == "ئ" && i+1 != word_to_display.length){
+      eval("document.images['l'].src='ئ وسط';" )
+    }
+    else {
+      if (char == "ى"){
+        char = "ي"
+      }
+      eval("document.images['l'].src=pics[char].src;" );
+      if (doubled){
+        //eval doubled letter???
+        // left:25px
+        // $("#letter").css("style","left: 10px;")
+        $("img").css("margin-right","45%")
+        // eval("$(\"#letter\").animate({left: \"-=30px\"}, 9000);")
+      }
+    }
+  }
+  if (mode == 1){
+    console.log(char)
+    if (char == "ى"){
+      char = "ي"
+      // eval("document.images['l'].src=\'ي.gif\';")
+
+      eval("document.images['l'].src=gifs[char].src");
+    }
+    else if (char == "ئ" || char == "ؤ") {
+      char = "ء"
+      // eval("document.images['l'].src=\'ء.gif\';")
+      eval("document.images['l'].src=gifs[char].src'");
+    }
+    else if (char == "ة"){
+      console.log("its ta marbuta")
+      eval("document.images['l'].src=pics[char].src;" );
+    }
+    else if (char == "أ" || char == "إ"){
+      char = "ا"
+      eval("document.images['l'].src=gifs[char].src");
+    }
+    else if (char == "ا" || char == "ب" || char == "ر" || char == "ز" || char == "س" || char == "ص" || char == "ض" || char == "ط" || char == "ا" || char == "ظ"){
+      var rand = Math.random() // get a random number between 0 and 1
+      if (rand){
+        eval("document.images['l'].src=gifs[char+\"2\"].src");
+      }
+      else {
+        eval("document.images['l'].src=gifs[char].src");
+      }
+    }
+    else {
+      eval("document.images['l'].src=gifs[char].src");
+    }
+  }
 }
 
 //this is for the sleep function
@@ -251,17 +261,17 @@ function sleep(ms) {
 async function delayedLetters(speed) {
 
   for (var i in word_to_display){
-	char = word_to_display[i]
-	var doubled = false;
-	if (i > 0 && char == word_to_display[i-1]){
-		doubled = true;
-	}
-	update_letter(i,char,doubled);
-	await sleep(1200/speed);
- 	}
- 	char = "blank"
- 	eval("$(\"#letter\").css(\"margin-right\",\"auto\")");
- 	document.images['l'].src="blank.png"
+  char = word_to_display[i]
+  var doubled = false;
+  if (i > 0 && char == word_to_display[i-1]){
+    doubled = true;
+  }
+  update_letter(i,char,doubled);
+  await sleep(1200/speed);
+  }
+  char = "blank"
+  eval("$(\"#letter\").css(\"margin-right\",\"auto\")");
+  document.images['l'].src="blank.png"
 }
 
 
