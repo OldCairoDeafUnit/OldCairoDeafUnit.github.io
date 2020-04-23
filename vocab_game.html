@@ -103,7 +103,7 @@ var sign = select_random();
 var next_sign = select_random();
 
 $("#sign").attr("src", sign.filename);
-$("#next_sign").prop('disabled', true);
+$("#next_sign").hide();
 $("#next_sign").attr("src", next_sign.filename);
 //need to place correct answer randomly tho
 function getRandomInt(max) {
