@@ -22,7 +22,7 @@
     <option value="0" selected="selected">العربية</option>
     <option value="1">English</option>
   </select>
-<img id="sign"/>
+<img rel="preload" id="sign"/>
 <p>ما معنى هذه الإشارة؟</p>
 <button id="choice1"></button>
 <button id="choice2"></button>
@@ -79,7 +79,11 @@
 {"filename" : "daughter_cropped.gif", "english" : "daughter","arabic" : "إبنة"},
 {"filename" : "sir_cropped.gif", "english" : "sir","arabic" : "أستاذ"}]
 
-
+var images= [];
+for (var i=0; i<vocab_list.length,i++){
+	images[i] = new Image(150,120)
+	images[i] = vocab_list[i].filename
+	}
 	//load random sign into sign
 	//load correct word and other words into choices
 	//on button press, check if correct
