@@ -23,6 +23,7 @@
     <option value="1">English</option>
   </select>
 <img rel="preload" id="sign"/>
+<img id="next_sign" disabled/>
 <p>ما معنى هذه الإشارة؟</p>
 <button id="choice1"></button>
 <button id="choice2"></button>
@@ -81,7 +82,7 @@
 
 var images= [];
 for (var i=0; i<vocab_list.length; i++){
-	images[i] = new Image(150,120)
+	images[i] = new Image(480,260)
 	images[i].src = vocab_list[i].filename
 	}
 	//load random sign into sign
@@ -100,6 +101,7 @@ function sleep(ms) {
 }
 var sign = select_random();
 $("#sign").attr("src", sign.filename);
+var next_sign = select_random();
 //need to place correct answer randomly tho
 function getRandomInt(max) {
   return Math.floor(Math.random() * Math.floor(max));
@@ -211,7 +213,8 @@ $("button").click(async function(){
 		$(this).toggleClass('red');
 	}
 	green_answer();
-	sign = select_random();
+	sign = next_sign
+	next_sign = select_random();
 	$("#sign").attr("src", sign.filename);
 	answer = place_answer();
 	$("button").prop('disabled', false);
