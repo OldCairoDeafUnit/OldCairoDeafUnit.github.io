@@ -107,3 +107,13 @@ button {
 	font-weight: normal;
 	box-shadow: 0 9px 18px rgba(0,0,0,0.2);
 }
+
+
+.red
+{
+    background-color:red;
+}
+.green
+{
+    background-color:green;
+}
