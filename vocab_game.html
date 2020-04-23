@@ -1,0 +1,215 @@
+<!doctype html><html dir="rtl" lang="ar">
+
+<head><meta charset="utf-8">
+	<title>لعبة المفردات</title>
+<meta name="keywords" content="arabic sign language, deaf, heard of hearing, egyptian sign language, saudi, qatar, UAE, kuwait, Oman, Yemen, Jordan, Lebanon, Syria, Fingerspelling, fingerspelling game, ASL, american sign language game, d/Deaf, HoH, تعلم الأبجدية العربية, تعلم الأبجدية الإنجليزية, bill vicars, لغة الإشارة الأمريكية,لغة الإشارة, الصم والبكم, الصم, ضعاف السمع, لغة الإشارة العربية, لغة الإشارة المصرية, مصر, كويت, سعوجيى, لبنان, الأردن, سوريا, الإمارات, عمان, يمن, حروف الأبجدية">
+<meta name="description" content="لعبة المفردات - لغة الاشارة المصرية">
+<meta name="robots" content="index, follow" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://oldcairodeafunit.github.io/index.html" rel="canonical">
+	<link rel="stylesheet" href="style.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+</head>
+<body>
+<!-- 	<div class="topnav">
+  <a class="active" href="index.html">الصفحة الرئيسية</a>
+  <a href="fingerspeller.html">لعبة هجاء الأصابع والتخاطب</a>
+  <a href="other_resources.html">مصادر ذات صلة</a>
+</div> -->
+<p>اختار اللغة</p>
+<select id="mode">
+    <option value="0" selected="selected">العربية</option>
+    <option value="1">English</option>
+  </select>
+<img id="sign"/>
+<p>ما معنى هذه الإشارة؟</p>
+<button id="choice1"></button>
+<button id="choice2"></button>
+<button id="choice3"></button>
+<button id="choice4"></button>
+
+</body>
+
+<script type="text/javascript">
+	
+
+	var vocab_list = [{"filename" : "guy_cropped.gif", "english" : "young man","arabic" : "شاب"},
+{"filename" : "sister_cropped.gif", "english" : "sister","arabic" : "أخت"},
+{"filename" : "relationship_cropped.gif", "english" : "relationship","arabic" : "علاقة"},
+{"filename" : "boy_cropped.gif", "english" : "boy","arabic" : "ولد"},
+{"filename" : "relatives2_cropped.gif", "english" : "relatives","arabic" : "أقارب"},
+{"filename" : "father_cropped.gif", "english" : "father","arabic" : "أب"},
+{"filename" : "children_cropped.gif", "english" : "children","arabic" : "أطفال"},
+{"filename" : "twins_cropped.gif", "english" : "twins","arabic" : "توأم"},
+{"filename" : "family_cropped.gif", "english" : "family","arabic" : "أسرة"},
+{"filename" : "relatives_cropped.gif", "english" : "relatives","arabic" : "أقارب"},
+{"filename" : "beggar_cropped.gif", "english" : "beggar","arabic" : "متسول"},
+{"filename" : "youngman2_cropped.gif", "english" : "young man","arabic" : "شاب"},
+{"filename" : "person2_cropped.gif", "english" : "person","arabic" : "شخص"},
+{"filename" : "mother_cropped.gif", "english" : "mother","arabic" : "أم"},
+{"filename" : "fiancee_cropped.gif", "english" : "fiancee","arabic" : "خطيبة"},
+{"filename" : "groom_cropped.gif", "english" : "groom","arabic" : "عريس"},
+{"filename" : "grandfather2_cropped.gif", "english" : "grandfather","arabic" : "جد"},
+{"filename" : "baby2_cropped.gif", "english" : "baby","arabic" : "رضيع"},
+{"filename" : "inhabitant_cropped.gif", "english" : "inhabitants","arabic" : "سكان"},
+{"filename" : "girl_cropped.gif", "english" : "girl","arabic" : "بنت"},
+{"filename" : "person_cropped.gif", "english" : "person","arabic" : "شخص"},
+{"filename" : "husband_cropped.gif", "english" : "husband","arabic" : "زوج"},
+{"filename" : "mother2_cropped.gif", "english" : "mother","arabic" : "أم"},
+{"filename" : "baby_cropped.gif", "english" : "baby","arabic" : "رضيع"},
+{"filename" : "bride_cropped.gif", "english" : "bride","arabic" : "عروسة"},
+{"filename" : "oldman_cropped.gif", "english" : "old man","arabic" : "كهل"},
+{"filename" : "grandfather_cropped.gif", "english" : "grandfather","arabic" : "جد"},
+{"filename" : "youngman_cropped.gif", "english" : "young man","arabic" : "شاب"},
+{"filename" : "man_cropped.gif", "english" : "man","arabic" : "رجل"},
+{"filename" : "parents_cropped.gif", "english" : "parents","arabic" : "اباء"},
+{"filename" : "wife_cropped.gif", "english" : "wife","arabic" : "زوجة"},
+{"filename" : "son_cropped.gif", "english" : "son","arabic" : "إبن"},
+{"filename" : "tourist_cropped.gif", "english" : "tourist","arabic" : "سائح"},
+{"filename" : "relationship2_cropped.gif", "english" : "relationship","arabic" : "علاقة"},
+{"filename" : "friend_cropped.gif", "english" : "friend","arabic" : "صديق"},
+{"filename" : "father2_cropped.gif", "english" : "father","arabic" : "أب"},
+{"filename" : "visitor_cropped.gif", "english" : "guest","arabic" : "ضيف"},
+{"filename" : "professor_cropped.gif", "english" : "professor","arabic" : "أستاذ"},
+{"filename" : "neighbors_cropped.gif", "english" : "neighbors","arabic" : "جيران"},
+{"filename" : "brother_cropped.gif", "english" : "brother","arabic" : "أخ"},
+{"filename" : "widow_cropped.gif", "english" : "widow","arabic" : "أرملة"},
+{"filename" : "grandmother_cropped.gif", "english" : "grandmother","arabic" : "جدة"},
+{"filename" : "daughter_cropped.gif", "english" : "daughter","arabic" : "إبنة"},
+{"filename" : "sir_cropped.gif", "english" : "sir","arabic" : "أستاذ"}]
+
+
+	//load random sign into sign
+	//load correct word and other words into choices
+	//on button press, check if correct
+		//then display correct answer and in future add fingerspelling
+		//then move on to next rando sign
+	//should have an array of sign filenames, and a javascript object mapping filenames to both english and arabic translations
+	function select_random(){
+		var item = vocab_list[Math.floor(Math.random() * vocab_list.length)];
+		//gets a random element from an array
+		return item
+	}
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+var sign = select_random();
+$("#sign").attr("src", sign.filename);
+//need to place correct answer randomly tho
+function getRandomInt(max) {
+  return Math.floor(Math.random() * Math.floor(max));
+}
+function place_answer(){
+	var num = getRandomInt(4);
+	var mode = $("#mode").val();
+	console.log(mode)
+	if (mode == 1){
+	if (num == 0){
+		$("#choice1").html(sign.english);
+		$("#choice2").html(select_random().english);
+		$("#choice3").html(select_random().english);
+		$("#choice4").html(select_random().english);
+	}
+	if (num == 1){
+		$("#choice2").html(sign.english);
+		$("#choice1").html(select_random().english);
+		$("#choice3").html(select_random().english);
+		$("#choice4").html(select_random().english);
+	}
+	if (num == 2){
+		$("#choice3").html(sign.english);
+		$("#choice2").html(select_random().english);
+		$("#choice1").html(select_random().english);
+		$("#choice4").html(select_random().english);
+	}
+	if (num == 3){
+		$("#choice4").html(sign.english);
+		$("#choice2").html(select_random().english);
+		$("#choice3").html(select_random().english);
+		$("#choice1").html(select_random().english);
+	}
+}
+	if (mode == 0){
+		console.log("arabic mode")
+		if (num == 0){
+		$("#choice1").html(sign.arabic);
+		$("#choice2").html(select_random().arabic);
+		$("#choice3").html(select_random().arabic);
+		$("#choice4").html(select_random().arabic);
+	}
+	if (num == 1){
+		$("#choice2").html(sign.arabic);
+		$("#choice1").html(select_random().arabic);
+		$("#choice3").html(select_random().arabic);
+		$("#choice4").html(select_random().arabic);
+	}
+	if (num == 2){
+		$("#choice3").html(sign.arabic);
+		$("#choice2").html(select_random().arabic);
+		$("#choice1").html(select_random().arabic);
+		$("#choice4").html(select_random().arabic);
+	}
+	if (num == 3){
+		$("#choice4").html(sign.arabic);
+		$("#choice2").html(select_random().arabic);
+		$("#choice3").html(select_random().arabic);
+		$("#choice1").html(select_random().arabic);
+	}
+	}
+	return num
+}
+var answer = place_answer();
+
+function green_answer(){
+	if (answer == 0){
+		$("#choice1").toggleClass('green')
+	}
+	if (answer == 1){
+		$("#choice2").toggleClass('green')
+	}
+	if (answer == 2){
+		$("#choice3").toggleClass('green')
+	}
+	if (answer == 3){
+		$("#choice4").toggleClass('green')
+	}
+}
+
+$("#mode").change(function(){
+	answer = place_answer()
+})
+
+$("button").click(async function(){
+	$("button").prop('disabled', true);
+	console.log("clicked!")
+	console.log($(this).html())
+	//check if it matches
+	var wrong = false;
+
+	if (($(this).html() == sign.english && $("mode").val() == 1) || ( $(this).html() == sign.arabic && $("mode").val() == 0) ){
+		console.log("correct");
+		//turn correct button green
+		green_answer();
+		//display fingerspelling of word
+	}
+	else {
+		console.log("wrong");
+		wrong = true;
+		//turn clicked button red this. turn red?
+		$(this).toggleClass('red');
+		green_answer();
+		//turn correct button green depends on what number answer is
+	}
+	//add some wait time for looking at the answer.. 3 seconds?
+	await sleep(3000);
+	//change the sign and text
+	if (wrong){
+		$(this).toggleClass('red');
+	}
+	green_answer();
+	sign = select_random();
+	$("#sign").attr("src", sign.filename);
+	answer = place_answer();
+	$("button").prop('disabled', false);
+})
+</script>
