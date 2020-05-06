@@ -93,7 +93,7 @@ function preloader() { //later version: load in videos of ta5atub and map them t
     for (i in letters){
       // if (dword.includes(letters[i])){
       pics[letters[i]] = new Image(50,50);
-      pics[letters[i]].src = letters[i]+".png";
+      pics[letters[i]].src = "letters/" +letters[i]+".png";
     // }
     }
     for (i in ta5atub) {
@@ -101,13 +101,13 @@ function preloader() { //later version: load in videos of ta5atub and map them t
       var char = ta5atub[i]
       if (char == "ا" || char == "ب" || char == "ر" || char == "ز" || char == "س" || char == "ص" || char == "ض" || char == "ط" || char == "ا" || char == "ظ"){
         gifs[ta5atub[i]+"2"] = new Image(50,50);
-        gifs[ta5atub[i]+"2"].src = ta5atub[i]+"2.gif"
+        gifs[ta5atub[i]+"2"].src = "letters/" +ta5atub[i]+"2.gif"
       }
-      gifs[ta5atub[i]].src = ta5atub[i]+".gif"
+      gifs[ta5atub[i]].src = "letters/" + ta5atub[i]+".gif"
     }
     for (i in eng_letters){
       asl_pics[eng_letters[i]] = new Image(50,50)
-      asl_pics[eng_letters[i]].src = eng_letters[i]+".png";
+      asl_pics[eng_letters[i]].src = "letters/" +eng_letters[i]+".png";
     }
   }
 }
@@ -245,7 +245,7 @@ function update_letter(i,char,doubled) {
   //if letter is ئ but in the middle of a word
   if (mode == 0){
     if (char == "ئ" && i+1 != word_to_display.length){
-      eval("document.images['l'].src='ئ وسط';" )
+      eval("document.images['l'].src='letters/ئ وسط';" )
     }
     else {
       if (char == "ى"){

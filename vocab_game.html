@@ -22,6 +22,11 @@
     <option value="0" selected="selected">العربية</option>
     <option value="1">English</option>
   </select>
+  <p>اختار فئة المفردات</p>
+ <select id="vocab_lists">
+    <option value="0" selected="selected">العائلة والأشخاص</option>
+    <option value="1">الملابس</option>
+  </select>
 <img rel="preload" id="sign"/>
 <img id="next_sign" disabled/>
 <p>ما معنى هذه الإشارة؟</p>
@@ -35,56 +40,113 @@
 <script type="text/javascript">
 	
 
-	var vocab_list = [{"filename" : "guy_cropped.gif", "english" : "young man","arabic" : "شاب"},
-{"filename" : "sister_cropped.gif", "english" : "sister","arabic" : "أخت"},
-{"filename" : "relationship_cropped.gif", "english" : "relationship","arabic" : "علاقة"},
-{"filename" : "boy_cropped.gif", "english" : "boy","arabic" : "ولد"},
-{"filename" : "relatives2_cropped.gif", "english" : "relatives","arabic" : "أقارب"},
-{"filename" : "father_cropped.gif", "english" : "father","arabic" : "أب"},
-{"filename" : "children_cropped.gif", "english" : "children","arabic" : "أطفال"},
-{"filename" : "twins_cropped.gif", "english" : "twins","arabic" : "توأم"},
-{"filename" : "family_cropped.gif", "english" : "family","arabic" : "أسرة"},
-{"filename" : "relatives_cropped.gif", "english" : "relatives","arabic" : "أقارب"},
-{"filename" : "beggar_cropped.gif", "english" : "beggar","arabic" : "متسول"},
-{"filename" : "youngman2_cropped.gif", "english" : "young man","arabic" : "شاب"},
-{"filename" : "person2_cropped.gif", "english" : "person","arabic" : "شخص"},
-{"filename" : "mother_cropped.gif", "english" : "mother","arabic" : "أم"},
-{"filename" : "fiancee_cropped.gif", "english" : "fiancee","arabic" : "خطيبة"},
-{"filename" : "groom_cropped.gif", "english" : "groom","arabic" : "عريس"},
-{"filename" : "grandfather2_cropped.gif", "english" : "grandfather","arabic" : "جد"},
-{"filename" : "baby2_cropped.gif", "english" : "baby","arabic" : "رضيع"},
-{"filename" : "inhabitant_cropped.gif", "english" : "inhabitants","arabic" : "سكان"},
-{"filename" : "girl_cropped.gif", "english" : "girl","arabic" : "بنت"},
-{"filename" : "person_cropped.gif", "english" : "person","arabic" : "شخص"},
-{"filename" : "husband_cropped.gif", "english" : "husband","arabic" : "زوج"},
-{"filename" : "mother2_cropped.gif", "english" : "mother","arabic" : "أم"},
-{"filename" : "baby_cropped.gif", "english" : "baby","arabic" : "رضيع"},
-{"filename" : "bride_cropped.gif", "english" : "bride","arabic" : "عروسة"},
-{"filename" : "oldman_cropped.gif", "english" : "old man","arabic" : "كهل"},
-{"filename" : "grandfather_cropped.gif", "english" : "grandfather","arabic" : "جد"},
-{"filename" : "youngman_cropped.gif", "english" : "young man","arabic" : "شاب"},
-{"filename" : "man_cropped.gif", "english" : "man","arabic" : "رجل"},
-{"filename" : "parents_cropped.gif", "english" : "parents","arabic" : "اباء"},
-{"filename" : "wife_cropped.gif", "english" : "wife","arabic" : "زوجة"},
-{"filename" : "son_cropped.gif", "english" : "son","arabic" : "إبن"},
-{"filename" : "tourist_cropped.gif", "english" : "tourist","arabic" : "سائح"},
-{"filename" : "relationship2_cropped.gif", "english" : "relationship","arabic" : "علاقة"},
-{"filename" : "friend_cropped.gif", "english" : "friend","arabic" : "صديق"},
-{"filename" : "father2_cropped.gif", "english" : "father","arabic" : "أب"},
-{"filename" : "visitor_cropped.gif", "english" : "guest","arabic" : "ضيف"},
-{"filename" : "professor_cropped.gif", "english" : "professor","arabic" : "أستاذ"},
-{"filename" : "neighbors_cropped.gif", "english" : "neighbors","arabic" : "جيران"},
-{"filename" : "brother_cropped.gif", "english" : "brother","arabic" : "أخ"},
-{"filename" : "widow_cropped.gif", "english" : "widow","arabic" : "أرملة"},
-{"filename" : "grandmother_cropped.gif", "english" : "grandmother","arabic" : "جدة"},
-{"filename" : "daughter_cropped.gif", "english" : "daughter","arabic" : "إبنة"},
-{"filename" : "sir_cropped.gif", "english" : "sir","arabic" : "أستاذ"}]
+	var family_vocab = [{"filename" : "family_vocab/family_vocab/guy_cropped.gif", "english" : "young man","arabic" : "شاب"},
+{"filename" : "family_vocab/sister_cropped.gif", "english" : "sister","arabic" : "أخت"},
+{"filename" : "family_vocab/relationship_cropped.gif", "english" : "relationship","arabic" : "علاقة"},
+{"filename" : "family_vocab/boy_cropped.gif", "english" : "boy","arabic" : "ولد"},
+{"filename" : "family_vocab/relatives2_cropped.gif", "english" : "relatives","arabic" : "أقارب"},
+{"filename" : "family_vocab/father_cropped.gif", "english" : "father","arabic" : "أب"},
+{"filename" : "family_vocab/children_cropped.gif", "english" : "children","arabic" : "أطفال"},
+{"filename" : "family_vocab/twins_cropped.gif", "english" : "twins","arabic" : "توأم"},
+{"filename" : "family_vocab/family_cropped.gif", "english" : "family","arabic" : "أسرة"},
+{"filename" : "family_vocab/relatives_cropped.gif", "english" : "relatives","arabic" : "أقارب"},
+{"filename" : "family_vocab/beggar_cropped.gif", "english" : "beggar","arabic" : "متسول"},
+{"filename" : "family_vocab/youngman2_cropped.gif", "english" : "young man","arabic" : "شاب"},
+{"filename" : "family_vocab/person2_cropped.gif", "english" : "person","arabic" : "شخص"},
+{"filename" : "family_vocab/mother_cropped.gif", "english" : "mother","arabic" : "أم"},
+{"filename" : "family_vocab/fiancee_cropped.gif", "english" : "fiancee","arabic" : "خطيبة"},
+{"filename" : "family_vocab/groom_cropped.gif", "english" : "groom","arabic" : "عريس"},
+{"filename" : "family_vocab/grandfather2_cropped.gif", "english" : "grandfather","arabic" : "جد"},
+{"filename" : "family_vocab/baby2_cropped.gif", "english" : "baby","arabic" : "رضيع"},
+{"filename" : "family_vocab/inhabitant_cropped.gif", "english" : "inhabitants","arabic" : "سكان"},
+{"filename" : "family_vocab/girl_cropped.gif", "english" : "girl","arabic" : "بنت"},
+{"filename" : "family_vocab/person_cropped.gif", "english" : "person","arabic" : "شخص"},
+{"filename" : "family_vocab/husband_cropped.gif", "english" : "husband","arabic" : "زوج"},
+{"filename" : "family_vocab/mother2_cropped.gif", "english" : "mother","arabic" : "أم"},
+{"filename" : "family_vocab/baby_cropped.gif", "english" : "baby","arabic" : "رضيع"},
+{"filename" : "family_vocab/bride_cropped.gif", "english" : "bride","arabic" : "عروسة"},
+{"filename" : "family_vocab/oldman_cropped.gif", "english" : "old man","arabic" : "كهل"},
+{"filename" : "family_vocab/grandfather_cropped.gif", "english" : "grandfather","arabic" : "جد"},
+{"filename" : "family_vocab/youngman_cropped.gif", "english" : "young man","arabic" : "شاب"},
+{"filename" : "family_vocab/man_cropped.gif", "english" : "man","arabic" : "رجل"},
+{"filename" : "family_vocab/parents_cropped.gif", "english" : "parents","arabic" : "اباء"},
+{"filename" : "family_vocab/wife_cropped.gif", "english" : "wife","arabic" : "زوجة"},
+{"filename" : "family_vocab/son_cropped.gif", "english" : "son","arabic" : "إبن"},
+{"filename" : "family_vocab/tourist_cropped.gif", "english" : "tourist","arabic" : "سائح"},
+{"filename" : "family_vocab/relationship2_cropped.gif", "english" : "relationship","arabic" : "علاقة"},
+{"filename" : "family_vocab/friend_cropped.gif", "english" : "friend","arabic" : "صديق"},
+{"filename" : "family_vocab/father2_cropped.gif", "english" : "father","arabic" : "أب"},
+{"filename" : "family_vocab/visitor_cropped.gif", "english" : "guest","arabic" : "ضيف"},
+{"filename" : "family_vocab/professor_cropped.gif", "english" : "professor","arabic" : "أستاذ"},
+{"filename" : "family_vocab/neighbors_cropped.gif", "english" : "neighbors","arabic" : "جيران"},
+{"filename" : "family_vocab/brother_cropped.gif", "english" : "brother","arabic" : "أخ"},
+{"filename" : "family_vocab/widow_cropped.gif", "english" : "widow","arabic" : "أرملة"},
+{"filename" : "family_vocab/grandmother_cropped.gif", "english" : "grandmother","arabic" : "جدة"},
+{"filename" : "family_vocab/daughter_cropped.gif", "english" : "daughter","arabic" : "إبنة"},
+{"filename" : "family_vocab/sir_cropped.gif", "english" : "sir","arabic" : "أستاذ"}]
+
+var clothing_vocab = [{"filename" : "clothing_vocab/shoes_2.gif", "english" : "shoes","arabic" : "حذاء"},
+{"filename" : "clothing_vocab/shawl.gif", "english" : "shawl","arabic" : "شال"},
+{"filename" : "clothing_vocab/tie.gif", "english" : "tie","arabic" : "كرافتة"},
+{"filename" : "clothing_vocab/underwear.gif", "english" : "underwear","arabic" : "كيلوت"},
+{"filename" : "clothing_vocab/clothing.gif", "english" : "clothing","arabic" : "ملابس"},
+{"filename" : "clothing_vocab/undergarments.gif", "english" : "undergarments","arabic" : "ملابس داخلية"},
+{"filename" : "clothing_vocab/sandals.gif", "english" : "sandals","arabic" : "صندل"},
+{"filename" : "clothing_vocab/pants.gif", "english" : "pants","arabic" : "بنطلون"},
+{"filename" : "clothing_vocab/belt.gif", "english" : "belt","arabic" : "حزام"},
+{"filename" : "clothing_vocab/skirt.gif", "english" : "skirt","arabic" : "جيبة"},
+{"filename" : "clothing_vocab/hat_2.gif", "english" : "hat","arabic" : "قبعة"},
+{"filename" : "clothing_vocab/swimsuit.gif", "english" : "swimsuit","arabic" : "مايو"},
+{"filename" : "clothing_vocab/dress.gif", "english" : "dress","arabic" : "فستان"},
+{"filename" : "clothing_vocab/gloves.gif", "english" : "gloves","arabic" : "جوانتي"},
+{"filename" : "clothing_vocab/galabiyya.gif", "english" : "galabiyya","arabic" : "جلباب"},
+{"filename" : "clothing_vocab/coat.gif", "english" : "coat","arabic" : "بالطو"},
+{"filename" : "clothing_vocab/flipflops_2.gif", "english" : "flipflops","arabic" : "شبشب"},
+{"filename" : "clothing_vocab/shoes.gif", "english" : "shoes","arabic" : "جزمة"},
+{"filename" : "clothing_vocab/bra.gif", "english" : "bra","arabic" : "حمالة صدر"},
+{"filename" : "clothing_vocab/blouse.gif", "english" : "blouse","arabic" : "بلوزة"},
+{"filename" : "clothing_vocab/petticoat_2.gif", "english" : "petticoat","arabic" : "جيبوبة"},
+{"filename" : "clothing_vocab/petticoat_3.gif", "english" : "petticoat","arabic" : "كومبين"},
+{"filename" : "clothing_vocab/apron.gif", "english" : "apron","arabic" : "مريلة"},
+{"filename" : "clothing_vocab/petticoat_4.gif", "english" : "petticoat","arabic" : "جيبوبة"},
+{"filename" : "clothing_vocab/shorts.gif", "english" : "shorts","arabic" : "شورت"},
+{"filename" : "clothing_vocab/underwear_2.gif", "english" : "underwear","arabic" : "ملابس داخلية"},
+{"filename" : "clothing_vocab/petticoat.gif", "english" : "petticoat","arabic" : "جيبوبة"},
+{"filename" : "clothing_vocab/shirt.gif", "english" : "shirt","arabic" : "قميص"},
+{"filename" : "clothing_vocab/bathing suit.gif", "english" : "bathing suit","arabic" : "مايو"},
+{"filename" : "clothing_vocab/flipflops.gif", "english" : "flipflops","arabic" : "شبشب"},
+{"filename" : "clothing_vocab/jacket.gif", "english" : "jacket","arabic" : "جاكت"},
+{"filename" : "clothing_vocab/pants_2.gif", "english" : "pants","arabic" : "بنطلون"},
+{"filename" : "clothing_vocab/pullover.gif", "english" : "pullover","arabic" : "بلوفر"},
+{"filename" : "clothing_vocab/t-shirt.gif", "english" : "t-shirt","arabic" : "تيشيرت"},
+{"filename" : "clothing_vocab/socks.gif", "english" : "socks","arabic" : "شراب"},
+{"filename" : "clothing_vocab/scarf.gif", "english" : "scarf","arabic" : "ايشارب"},
+{"filename" : "clothing_vocab/headscarf.gif", "english" : "headscarf","arabic" : "طرحة"},
+{"filename" : "clothing_vocab/hat.gif", "english" : "hat","arabic" : "قبعة"},
+{"filename" : "clothing_vocab/scarf_2.gif", "english" : "scarf","arabic" : "كوفية"},
+{"filename" : "clothing_vocab/stockings.gif", "english" : "stockings","arabic" : "شراب بناتي"},
+{"filename" : "clothing_vocab/pocket.gif", "english" : "pocket","arabic" : "جيب"},
+{"filename" : "clothing_vocab/suit.gif", "english" : "suit","arabic" : "بدلة"}]
+
 
 // var images= [];
 // for (var i=0; i<vocab_list.length; i++){
 // 	images[i] = new Image(480,260)
 // 	images[i].src = vocab_list[i].filename
 // 	}
+var vocab_list = family_vocab;
+$("#vocab_lists").change(function(){
+	var val = $("#vocab_lists").val()
+	if (val == 0){
+		vocab_list = family_vocab;
+		console.log("change to family")
+	}
+	if (val == 1){
+		vocab_list = clothing_vocab;
+		console.log("change to clothing")
+	}
+})
+
 	//load random sign into sign
 	//load correct word and other words into choices
 	//on button press, check if correct
@@ -112,7 +174,6 @@ function getRandomInt(max) {
 function place_answer(){
 	var num = getRandomInt(4);
 	var mode = $("#mode").val();
-	console.log(mode)
 	if (mode == 1){
 	if (num == 0){
 		$("#choice1").html(sign.english);
@@ -140,7 +201,6 @@ function place_answer(){
 	}
 }
 	if (mode == 0){
-		console.log("arabic mode")
 		if (num == 0){
 		$("#choice1").html(sign.arabic);
 		$("#choice2").html(select_random().arabic);
@@ -191,13 +251,10 @@ $("#mode").change(function(){
 
 $("button").click(async function(){
 	$("button").prop('disabled', true);
-	console.log("clicked!")
-	console.log($(this).html())
 	//check if it matches
 	var wrong = false;
 
 	if (($(this).html() == sign.english && $("mode").val() == 1) || ( $(this).html() == sign.arabic && $("mode").val() == 0) ){
-		console.log("correct");
 		//turn correct button green
 		green_answer();
 		//display fingerspelling of word
